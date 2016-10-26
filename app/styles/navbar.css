@@ -1,0 +1,167 @@
+/* Navbar Styling
+*/
+
+/*Makes buttons not black*/
+
+.hide_link a h3{
+  color: black;
+  text-decoration: none;
+}
+
+.navbar_main{
+  position: fixed;
+  z-index: 999;
+  background-color: rgba(255,255,255,0.5) !important;
+}
+
+/*Makes buttons not underlined*/
+.hide_link a {
+  text-decoration: none;
+}
+
+/*Searchbar into flex container*/
+#search_box {
+  display: flex;
+  justify-content: flex-end;
+}
+
+md-toolbar h3 {
+  margin: auto;
+  font-weight: 500;
+}
+
+/*Uniform buttons in sidenav*/
+md-list-item > button {
+  width:100%;
+  text-align:left !important;
+  height:70px;;
+}
+
+/*Logo - Designed for mobile first*/
+#nav_logo img{
+  display: flex;
+  flex-direction: row;
+  width:148px;
+  justify-content: center;
+  align-content: center;
+  margin-left: 6px;
+}
+
+/*Leftside of navbar*/
+.navbar_left{
+  display: flex;
+  flex: 35;
+}
+
+/*Rightside placeholder to equalize spacing when signed in*/
+#navbar_right_placeholder{
+  width: 53px;
+}
+
+.navbar {
+  background-color: transparent !important;
+}
+
+
+/*Could be used to style focus of searchbar*/
+input.md-input:focus{ color: #E91E63; } 
+
+
+.sideNavHeroImage {
+/*  background: url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/footer_lodyas.png);*/
+  width: 100%;
+  height: 128px;
+}
+
+.profileImage { 
+  background: url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/footer_lodyas.png);
+  width: 128px;
+  height: 128px;
+  display: block;
+  border: 1px solid #021a40!important;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 4, 0.5);
+  -moz-box-shadow: 0 0 10px rgba(0, 0, 4, 0.5);
+  box-shadow: 0 0 10px rgba(0, 0, 4, 0.5);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  border-radius: 50%;
+  box-sizing: border-box;
+  position: absolute; 
+  left:50%;
+  margin-top: 64px; 
+  margin-left:-64px;
+}
+
+
+.sideNavList .md-button {
+  color: inherit;
+  text-align: left;
+  width: 100%;
+}
+
+
+/* Navbar Styling End */
+
+Styling textAngular
+
+.ta-editor {
+    min-height: 300px;
+    height: auto;
+    overflow: auto;
+    font-family: inherit;
+    font-size: 100%;
+    margin:20px 0;
+}
+
+
+/*.browserupgrade {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+*/
+
+
+/*Responsive: Iphone6*/
+/*TODO: Add other device screen sizes*/
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2) {
+/*    Makes buttons smaller on mobile devices */
+    .navbar_left{
+      display: flex;
+    }
+    .navbar_left .md-button{
+      min-width:25px;
+    }
+    .navbar_right .md-button{
+      min-width:25px;
+    }
+    .md-toolbar-tools .md-button{
+      min-width:25px;
+    }
+
+   /* Adds margin to login button to center logo on mobile*/
+    .hide_link#login {
+      margin-left: 25px;
+    }
+  }
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  /*THIS WAS DELETED: Increases size of hero photo on big screens*/
+
+  /*Increases size of logo on big screens*/
+  #nav_logo img {
+    padding-top: 3px;
+    width: 180px;
+    margin-left: 35px;
+  }
+  /*Right navbar placeholder size to equalize spacing when signed in*/
+  #navbar_right_placeholder {
+    width: 100px;
+  }
+}

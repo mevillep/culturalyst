@@ -1,27 +1,60 @@
-<div class="jumbotron">
-  <h1>'Hello, 'Allo!</h1>
-  <button type="button" name="button" ng-click="login()">FB Login </button>
-  <button type="button" name="button" ng-click="getCurrentUser()">Get Current user </button>
-
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
+<div class="hero">
+  <div class="picture-overlay">
+  </div>
 </div>
 
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    TIGER
-  </p>
 
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
-  {{awesomeThings}}
-{{some}}
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
+<div class="main_container description">
+    <md-button class="md-fab big-fab" aria-label="Big FAB" ng-click="fbLogin()"> Login with Facebook
+    </md-button>
+    <md-button class="md-fab big-fab" aria-label="Big FAB">
+    </md-button>
+    <md-button class="md-fab big-fab" aria-label="Big FAB">
+    </md-button>
+    <md-button class="md-fab big-fab" aria-label="Big FAB">
+    </md-button>
+</div>
+
+
+<div class="main_container categories">
+    <md-button class="md-fab big-fab" aria-label="Big FAB">
+    </md-button>
+    <md-button class="md-fab big-fab" aria-label="Big FAB">
+    </md-button>
+    <md-button class="md-fab big-fab" aria-label="Big FAB">
+    </md-button>
+    <md-button class="md-fab big-fab" aria-label="Big FAB">
+    </md-button>
+</div>
+
+<div class="main_container curated">
+    <md-button class="md-fab big-fab" aria-label="Big FAB">
+    </md-button>
+    <md-button class="md-fab big-fab" aria-label="Big FAB">
+    </md-button>
+    <md-button class="md-fab big-fab" aria-label="Big FAB">
+    </md-button>
+    <md-button class="md-fab big-fab" aria-label="Big FAB">
+    </md-button>
+</div>
+
+<div class="main_container featured">
+<!-- // TODO: Refactor so that the bottomsheet opens on each independent card -->   
+<!--     <md-card ng-repeat="artist in featured"  flex>
+        <md-content flex id="content">
+          <img src="../../assets/images/artist_profiles/{{artist.cover}}.png" class="md-card-image" alt="Cover">
+          <md-card-header>
+            <md-card-avatar>
+              <img class="md-user-avatar" src="../../assets/images/artist_profiles/{{artist.profile}}" alt="Cover"/>
+            </md-card-avatar>
+            <md-card-header-text>
+              <span class="md-title">{{artist.name}}</span>
+              <span class="md-subhead">Graffiti</span>
+            </md-card-header-text>
+            <md-button class="md-icon-button contact" ng-click="openBottomSheet()" aria-label="Favorite">
+                <md-icon md-svg-icon="search_black"></md-icon>
+            </md-button>
+          </md-card-header>
+        </md-content>
+      </md-card>  -->
 </div>

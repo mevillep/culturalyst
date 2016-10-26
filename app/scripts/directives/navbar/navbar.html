@@ -1,0 +1,125 @@
+<div layout="row" ng-controller="NavbarController" >
+
+  <div flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2">
+
+    <md-toolbar layout="row" layout-align="center center" class="md-whiteframe-z1 navbar_main">
+
+      <div class="navbar_left">
+        <md-button id="main" class="menu" ng-click="openLeftMenu()" aria-label="Show Menu">
+          <md-icon md-svg-icon="menu_black"></md-icon>
+        </md-button>
+
+       <!--  <md-button class="hide_link" hide show-lg>
+          <a ui-sref="main" ui-sref-active="active">
+            <h3>Home</h3>
+          </a>
+        </md-button>
+
+        <md-button class="hide_link" hide show-lg>
+            <a ui-sref="discovery"><h3>Discovery</h3></a>
+        </md-button>
+
+        <md-button aria-label="Search" ng-hide="isLoggedIn()" ng-click="showSearch = !showSearch">
+          <md-icon md-svg-icon="search_black"></md-icon>
+        </md-button> -->
+      </div>
+
+      <div flex="60" id="nav_logo">
+        <img src="../assets/images/logo_small.png">
+      </div>
+
+<!--       <div class="navbar_right" layout="row">
+        <md-button class="hide_link" ng-hide="isLoggedIn()" hide-xs>
+          <a ui-sref="signup"><h3>Sign Up</h3></a>
+        </md-button>
+        <md-button class="hide_link" id="login" ng-hide="isLoggedIn()">
+          <a ui-sref="login"><h3>Login</h3></a>
+        </md-button>
+        <div id="navbar_right_placeholder" ng-show="isLoggedIn()">
+
+        </div>
+        <md-button aria-label="Search" ng-show="isLoggedIn()" ng-click="showSearch = !showSearch">
+          <md-icon md-svg-icon="search_black"></md-icon>
+        </md-button>
+      </div>  -->  
+    </md-toolbar>
+
+<!--     <md-toolbar class="md-hue-1" ng-show="showSearch">
+      <div class="md-toolbar-tools">
+        TODO: Have search bar close + clear by pressing X
+
+        <md-button ng-click="showSearch = !showSearch" aria-label="Back">
+          <md-icon md-svg-icon="clear_black"></md-icon>
+        </md-button>
+
+        <md-input-container id="search_box" md-no-float flex>
+          <input ng-model="nav.search" type="text" placeholder="Search">
+        </md-input-container>
+
+          TODO: Have search functionality begin on keyboard "enter" or by pressing "check"
+        <md-button aria-label="Search" ng-click="showSearch = !showSearch">
+          <md-icon md-svg-icon="enter_black"></md-icon>
+        </md-button>
+
+        </div>
+       
+      </md-toolbar> -->
+
+
+
+  </div>
+
+  <md-sidenav md-component-id="left" class="md-sidenav-left">
+    <md-toolbar class="md-whiteframe-z1" style="background-color: rgba(0, 0, 0, 0.5);" >
+      <h3 ng-show="!isLoggedIn()"></h3>
+      <div layout="column" ng-show="isLoggedIn()"></div>
+
+    </md-toolbar>
+
+    <md-list class="sideNavList" style="background-color: rgba(0, 0, 0, 0);" >
+
+      <md-list-item class="hide_link">
+          <md-button  ng-click="closeLeftMenu()">
+            <a ui-sref="main"><h3>Home</h3></a>
+          </md-button>
+      </md-list-item >
+
+      <md-list-item class="hide_link">
+          <md-button ng-click="closeLeftMenu()">
+          <a ui-sref="discovery"><h3>Discovery</h3></a>
+          </md-button>
+      </md-list-item>
+
+      <md-list-item ng-repeat="it in menu" class="hide_link">
+        <md-button ng-click="closeLeftMenu()"/> 
+          <a ui-sref="{{it.state}}"><h3>{{it.title}}</h3></a>
+        </md-button>
+      </md-list-item>
+      <md-divider ng-show="isLoggedIn()"></md-divider>
+      <md-subheader ng-show="isLoggedIn()">Account</md-subheader>
+
+<!--       TODO: Make Artist profile show up only if user is logged in & is artist -->
+      <md-list-item ng-show="isArtist()" class="hide_link">
+          <md-button   ng-click="closeLeftMenu()">
+           <a ui-sref="artist"><h3>Artist Profile</h3></a>
+          </md-button>
+      </md-list-item>
+
+<!--       TODO: Make signupArtist only show if User is not an artist -->
+      <md-list-item class="hide_link">
+          <md-button   ng-click="closeLeftMenu()">
+           <a ui-sref="signupArtist"><h3>Artist Sign Up</h3></a>
+          </md-button>
+      </md-list-item>
+      
+      <md-list-item ng-show="isLoggedIn()" class="hide_link">
+          <md-button   ng-click="closeLeftMenu()">
+           <a ui-sref="logout"><h3>Logout</h3></a>
+          </md-button>
+      </md-list-item>
+
+    </md-list>
+
+  </md-sidenav>
+
+</div>
