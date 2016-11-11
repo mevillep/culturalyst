@@ -35,6 +35,21 @@
         controller: 'ArtistCtrl',
         controllerAs: 'artist'
       })
+      .when('/artist_signup', {
+        templateUrl: 'views/artist_signup.html',
+        controller: 'ArtistSignupCtrl',
+        controllerAs: 'artist_signup'
+      })
+      .when('/discovery', {
+        templateUrl: 'views/discovery.html',
+        controller: 'DiscoveryCtrl',
+        controllerAs: 'discovery'
+      })
+      .when('/discovery_B', {
+        templateUrl: 'views/discovery_B.html',
+        controller: 'DiscoveryCtrl_B',
+        controllerAs: 'discovery_B'
+      })
       .otherwise({
         redirectTo: '/'
       })
@@ -63,6 +78,8 @@
       .icon("facebook", "./assets/svg/facebook.svg", 24)
       .icon("instagram", "./assets/svg/instagram.svg", 24)
       .icon("soundcloud", "./assets/svg/soundcloud.svg", 24)
+      .icon("play_black", "./assets/svg/play_black.svg", 24)
+      .icon("playArrow_black", "./assets/svg/playArrow_black.svg", 24)
 
         // $locationProvider.html5Mode(true);
   });

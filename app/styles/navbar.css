@@ -8,6 +8,10 @@
   text-decoration: none;
 }
 
+button#login {
+    color: black;
+}
+
 .navbar_main{
   position: fixed;
   z-index: 999;
@@ -114,6 +118,11 @@ Styling textAngular
     margin:20px 0;
 }
 
+/*Signup Modal*/
+.login_signup_modal{
+  width:100%;
+
+}
 
 /*.browserupgrade {
   margin: 0.2em 0;

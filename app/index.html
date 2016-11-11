@@ -14,6 +14,10 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/navbar.css">
+    <link rel="stylesheet" href="styles/login.css">
+    <link rel="stylesheet" href="styles/artist_signup.css">
+    <link rel="stylesheet" href="styles/discovery.css">
+    <link rel="stylesheet" href="styles/discovery_B.css">
     <!-- endbuild -->
      <!-- <base href="/">
  -->  
@@ -43,8 +47,8 @@
         </div>
       </div>
     </div> -->
-    <navbar></navbar>
     <div class="container">
+    <navbar></navbar>
     <div ng-view=""></div>
     </div>
 
@@ -64,6 +68,39 @@
    firebase.initializeApp(config);
   </script>
 
+<!--   Soundcloud project initialization
+ -->
+
+<!--  <script src="bower_components/soundManager2/soundmanager2-nodebug-jsmin.js"></script> -->
+<script src="bower_components/soundManager2/script/soundmanager2.js"></script>
+<script src="bower_components/soundManager2/demo/360-player/script/berniecode-animator.js"></script>
+<script src="bower_components/soundManager2/demo/360-player/script/excanvas.js"></script>
+<script src="bower_components/soundManager2/demo/360-player/script/360player.js"></script>
+
+  <script>
+  soundManager.setup({
+    url: '/path/to/swf-files/',
+    flashVersion: 9, // optional: shiny features (default = 8)
+    // optional: ignore Flash where possible, use 100% HTML5 mode
+    // preferFlash: false,
+    onready: function() {
+      // Ready to use; soundManager.createSound() etc. can now be called.
+    }
+  });
+  </script>
+
+    <script>
+threeSixtyPlayer.config = {
+  playNext: false, // stop after one sound, or play through list until end
+  autoPlay: false, // start playing the first sound right away
+  allowMultiple: true, // let many sounds play at once (false = one at a time)
+  loadRingColor: '#ccc',// amount of sound which has loaded
+  playRingColor: '#000', // amount of sound which has played
+  backgroundRingColor: '#eee', // "default" color shown underneath everything else
+  animDuration: 500,
+  animTransition: Animator.tx.bouncy// http://www.berniecode.com/writing/animator.html
+}
+  </script>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -94,8 +131,12 @@
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/discovery.js"></script>
+        <script src="scripts/controllers/discovery_B.js"></script>
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/controllers/artist.js"></script>
+        <script src="scripts/controllers/artist_signup.js"></script>
+
 
         <script src="scripts/services/auth1.js"></script>
         <script src="scripts/directives/navbar/navbar.js"></script>

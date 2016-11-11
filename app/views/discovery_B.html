@@ -1,0 +1,37 @@
+<div class="page_container_discover_B">
+	<div class="medium_container">
+	    <div class="button_container">
+		    <md-button class="md-fab medium-fab" id="music" ng-click="loadMusicSubMediums()" aria-label="Big FAB">
+		    </md-button>
+	    	<label>Music</label>
+	    </div>
+	    <div class="button_container">
+		    <md-button class="md-fab medium-fab" id="visualArt"aria-label="Big FAB">
+		    </md-button>
+	    	<label>Visual</label>
+	    </div>
+	    <div class="button_container">
+		    <md-button class="md-fab medium-fab" id="performingArt" aria-label="Big FAB"> 
+		    </md-button>
+	    	<label>Performing</label>
+	    </div>
+	    <div class="button_container">
+		    <md-button class="md-fab medium-fab" id="writing"aria-label="Big FAB">
+		    </md-button>
+	    	<label>Writing</label>
+			</div>
+			<div class="button_container">
+		    <md-button class="md-fab medium-fab" id="cultureBearers"aria-label="Big FAB">
+		    </md-button>
+	    	<label>Culture</label>
+			</div>
+	</div>
+
+	<div class="submedium_container">
+		 <div class="button_container" ng-repeat="submedium in submedia">
+		    <md-button class="md-fab submedium-fab" id="visualArt"aria-label="Big FAB">
+		    </md-button>
+	    	<label>{{submedium}}</label>
+	    </div>
+	</div>
+</div>

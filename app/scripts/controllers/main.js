@@ -8,7 +8,7 @@
  * Controller of the culturalystApp
  */
 angular.module('culturalystApp')
-  .controller('MainCtrl',['$scope','auth1',function ($scope,auth1) {
+  .controller('MainCtrl',['$scope','auth1',function ($scope, auth1) {
 
 // console.log(auth);
   $scope.awesomeThings = [
@@ -16,13 +16,6 @@ angular.module('culturalystApp')
       'AngularJS',
       'Karma'
     ];
-  //
-  //     $scope.isLoggedIn = function(){
-  //   return auth1.isLoggedIn();
-  // }
 
-  $scope.login = function(){
-    auth1.login();
-  }
     $scope.some = 'some string';
   }]);

@@ -1,0 +1,291 @@
+/*Instructions Page*/
+
+
+.container #introduction{
+	padding: 20px;
+}
+.container #introduction h1{
+	text-align: center;
+}
+
+#steps{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	margin-top: 100px;
+}
+
+.step {
+	display: flex;
+	display: column;
+	flex-wrap: wrap;
+	justify-content: center;
+	max-width: 100px;
+}
+
+.container .button-fab{
+	height: 100px;
+	width: 100px;
+	vertical-align: middle;
+	background-color: #1E88E5 !important;
+	padding-top: 20px;
+	margin-top: 100px;
+}
+
+/*Basics Page*/
+.active_step {
+	width: 0;
+	height: 0;
+	border-left: 30px solid transparent;
+	border-right: 30px solid transparent;
+	border-bottom: 60px solid #FFEBEE;
+	margin-top: 10px;
+	display: flex;
+	flex-direction:column;
+	justify-content: center;
+}
+
+.active_step h1{
+  margin-top: 92px;
+  margin-left: -9px;
+}
+/*Centering Toolbar*/
+.md-toolbar-tools {
+    /* align-content: center; */
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+/*
+Coloring Toolbar*/
+md-toolbar.toolbar_basics {
+   /* background-color: #FFEBEE;*/
+    border: 2px solid black;
+}
+
+/*Help Content*/
+.toggle-content {
+  height: 200px;
+  background: #FFEBEE;
+  border: 2px solid #ECEFF1;
+}
+
+.toggle-content.ng-hide-add, .toggle-content.ng-hide-remove {
+  transition: height linear 0.5s;
+}
+
+.toggle-content.ng-hide {
+  height: 0;
+}
+
+.help{
+	float:right;
+}
+
+/*Max Width for Form*/
+.maxFormWidth {
+  max-width: 896px;
+  margin: auto;
+}
+
+/*The Basics*/
+#basics{
+	padding: 20px;
+	max-width: 896px;
+  margin: auto;
+  margin-bottom: 40px;
+  margin-top: 40px;
+}
+
+#basics md-content{
+	border: 2px solid #ECEFF1;
+}
+
+#saveBasics{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+  margin-top: -33px;
+}
+
+
+button#saveBasicsButton {
+	background-color: #FFEBEE;
+}
+/*
+The Art*/
+
+#theArt{
+	padding: 20px;
+	margin-bottom: 40px;
+}
+
+#theArt md-content{
+	border: 2px solid #ECEFF1;
+	
+}
+
+md-toolbar.toolbar_theArt {
+    border: 2px solid black;
+}
+
+#saveArt {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+  margin-top: -33px;
+}
+
+button#saveArtButton {
+	background-color: #FFEBEE;
+}
+
+/*The Properties*/
+
+#properties {
+	padding: 20px;
+	margin-bottom: 40px;
+}
+
+#properties md-content{
+	border: 2px solid #ECEFF1;
+
+}
+
+md-toolbar.toolbar_properties {
+    border: 2px solid black;
+}
+
+#saveProperties {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+  margin-top: -33px;
+}
+
+button#savePropertiesButton {
+	background-color: #FFEBEE;
+}
+
+/*PAGE 2: STORY*/
+
+#story{
+	padding: 20px;
+	max-width: 896px;
+  margin: auto;
+  margin-bottom: 40px;
+  margin-top: 40px;
+}
+
+#story md-content{
+	border: 2px solid #ECEFF1;
+
+}
+
+
+md-toolbar.toolbar_story {
+    border: 2px solid black;
+}
+
+.toggle-content_story {
+  height: 200px;
+  background: #E3F2FD;
+  border: 2px solid #ECEFF1;
+}
+
+.toggle-content_story.ng-hide-add, .toggle-content_story.ng-hide-remove {
+  transition: height linear 0.5s;
+}
+
+.toggle-content_story.ng-hide {
+  height: 0;
+}
+
+#saveStory{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+  margin-top: -33px;
+}
+
+button#saveStoryButton {
+	background-color: #E3F2FD;
+}
+
+/*PAGE 3: Profile*/
+
+#profile{
+	margin-top: 100px;
+}
+
+#work{
+	padding: 20px;
+	max-width: 896px;
+  margin: auto;
+  margin-bottom: 40px;
+  margin-top: 40px;
+}
+
+#work md-content{
+	border: 2px solid #ECEFF1;
+
+}
+
+
+md-toolbar.toolbar_work {
+    border: 2px solid black;
+}
+
+.toggle-content_work {
+  height: 200px;
+  background: #FFFDE7;
+  border: 2px solid #FFFDE7;
+}
+
+.toggle-content_work.ng-hide-add, .toggle-content_work.ng-hide-remove {
+  transition: height linear 0.5s;
+}
+
+.toggle-content_work.ng-hide {
+  height: 0;
+}
+
+#saveWork{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+  margin-top: -33px;
+}
+
+button#saveWorkButton {
+	background-color: #FFFDE7;
+}*/
+
+
+
+/*Responsive: Iphone6*/
+/*TODO: Add other device screen sizes*/
+/*@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2) {
+
+  	#steps {
+    margin-top: 72px;
+		}
+ }*/
+
+
+
+/*TODO: Change hue of helper text in input fields*/
+
+
+
+
+

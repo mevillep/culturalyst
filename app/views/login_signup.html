@@ -1,0 +1,65 @@
+<!-- Idea: Put a picture of team at signup and login to say thank you and create connection between the team
+creating culturalyst and the folks signing up.  -->
+<md-dialog aria-label="Login" class="login_signup_modal">
+    <md-toolbar>
+      <div class="md-toolbar-tools" style=>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-svg-src="clear_black" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+<!--     <div class="hero">
+        <div class="picture-overlay">
+        </div>
+    </div> -->
+        <md-button aria-label="Search" ng-show="isLoggedIn()" ng-click="showSearch = !showSearch">
+          <md-icon md-svg-icon="search_black"></md-icon>
+        </md-button>
+
+
+    <md-dialog-content>
+      <md-tabs  md-border-bottomm md-center-tabs>
+        <md-tab label="Login">
+          <md-content class="md-padding">
+                <div>
+                  <md-input-container>
+                    <label>Email</label>
+                    <input ng-model="existingUser.email">
+                  </md-input-container>
+
+                  <md-input-container>
+                    <label>Password</label>
+                    <input ng-model="existingUser.password" type="password">
+                  </md-input-container>
+                  <a>Forgot Password?</a>
+                </div>
+
+                <md-button class="md-fab" aria-label="Button" ng-click = emailSignin(existingUser)>Login</md-button>
+                <md-button class="md-fab" style="background-color: blue" aria-label="Button" ng-click="login()">FB</md-button>
+          </md-content>
+        </md-tab>
+        <md-tab label="Signup">
+          <md-content class="md-padding">
+                  <md-input-container>
+                    <label>Email</label>
+                    <input ng-model="user.email">
+                  </md-input-container>
+
+                  <md-input-container>
+                    <label>Password</label>
+                    <input ng-model="user.password" type="password">
+                  </md-input-container>
+
+                  <md-input-container>
+                    <label>Confirm Password</label>
+                    <input ng-model="user.email2" type="password">
+                  </md-input-container>
+
+                <md-button class="md-fab" aria-label="Button" ng-click = email(user)>SU</md-button>
+                <md-button class="md-fab" style="background-color: blue" aria-label="Button" ng-click="login()">FB</md-button>
+          </md-content>
+        </md-tab>
+      </md-tabs>
+    </md-dialog-content>
+</md-dialog>
