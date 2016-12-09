@@ -16,7 +16,7 @@
       'ngResource',
       'ngRoute',
       'ngSanitize',
-      'ngMaterial',
+      'ngMaterial'
     ])
     .config(function ($routeProvider, $mdIconProvider, $locationProvider) {
     $routeProvider
@@ -47,6 +47,16 @@
       })
       .when('/discovery_B', {
         templateUrl: 'views/discovery_B.html',
+        controller: 'DiscoveryCtrl_B',
+        controllerAs: 'discovery_B'
+      })
+      .when('/artist_work', {
+        templateUrl: 'views/artist_work.html',
+        controller: 'DiscoveryCtrl_B',
+        controllerAs: 'discovery_B'
+      })
+      .when('/artist_bio', {
+        templateUrl: 'views/artist_bio.html',
         controller: 'DiscoveryCtrl_B',
         controllerAs: 'discovery_B'
       })

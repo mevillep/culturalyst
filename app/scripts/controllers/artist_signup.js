@@ -11,6 +11,8 @@ angular.module('culturalystApp')
   .controller('ArtistSignupCtrl',['$scope', 'auth1', function ($scope, auth1) {
 
   	$scope.currentUser = {};
+    $scope.selectedMedium;
+    $scope.selectedSubmedium;
 
 
   	// $scope.currentUser.userId = firebase.auth().currentUser.uid;
@@ -47,6 +49,20 @@ angular.module('culturalystApp')
 
   $scope.saveMedium();
 
+      $scope.loadSubMediums = function(medium){
+      console.log(medium);
+      $scope.submedia = medium.submedia;
+    };
+
+    $scope.selectionMade = function(){
+      console.log('in this bish')
+      if ($scope.results != undefined){
+        return true
+      } else{
+        return false
+      }
+    };
+
 
 // return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
 //   var username = snapshot.val().username;
@@ -70,6 +86,16 @@ angular.module('culturalystApp')
       name_last: $scope.currentUser.name_last
     });
   };
+
+    $scope.mediums = [
+      {'name': 'Music', 'submedia': ['Acoustic', 'Afro-caribbean', 'Americana', 'Bounce', 'Brass', 'Blues', 'Bluegrass', 'Brazilian','Burlesque','Cajun','Celtic','Classical','Country','EDM','Folk','Funk','Gospel','Hip-Hop/R&B','Indie','Jazz','Punk','Reggae','Roots','Soul','Zydeco']},
+      {'name': 'Visual', 'submedia': ['Photography', 'Painting', 'Sculpture','Graffiti', 'Film', 'Costumes', 'Graphic Design']},
+      {'name': 'Performing', 'submedia': ['Spoken Word', 'Comedy', 'Acting', 'Dance']},
+      {'name': 'Writing', 'submedia': ['Fiction', 'Non-fiction', 'Poetry', 'Journalism']},
+      {'name': 'Culture Bearers', 'submedia': ['Digital', 'Film']},
+      {'name': 'Culinary', 'submedia': []}
+    ];
+
 
 
   }]);

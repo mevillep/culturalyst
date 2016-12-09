@@ -6,61 +6,110 @@ angular.module('culturalystApp')
   $scope.selectedMedium;
   $scope.selectedSubmedium;
   $scope.results;
+  $scope.musicResultsFB = [];
 
   	$scope.loadSubMediums = function(medium){
       console.log(medium);
       $scope.submedia = medium.submedia;
     };
 
-    $scope.ifMusic = function(medium){
-    console.log('if music is firing'); 	
-	    if (medium.name === 'Music'){
-	    	$scope.results = $scope.music_results;
-	    }else{
-	    	$scope.results = [];
-	    };
-    }
+    $scope.selectionMade = function(){
+      console.log('in this bish')
+    	if ($scope.results != undefined){
+    		return true
+    	} else{
+    		return false
+    	}
+    };
 
+  $scope.getArtists = function(medium){
+    var Medium = medium.name;
+    firebase.database().ref('/Artists/' + Medium).once('value').then(function(snapshot){
+      console.log(fbMedium);
+      console.log(snapshot.val());
+      var obj = snapshot.val().Jazz;
+      for (var key in obj) {
+        var innerObj = obj[key]
+        console.log(innerObj);
+        $scope.musicResultsFB.push(innerObj);
+      }
+      console.log($scope.musicResultsFB);
+    })
+  }
+
+    // $scope.ifMusic = function(medium){
+    // console.log('if music is firing');  
+    //   if (medium.name === 'Music'){
+    //     // $scope.results = $scope.music_results;
+    //     $scope.getArtists();
+    //     $scope.results = $scope.musicResultsFB;
+    //     return true;
+    //   }else{
+    //     $scope.results = undefined;
+    //     return false;
+    //   };
+    // }
+
+
+    /* NAVIGATION */
     $scope.currentNavItem = 'Artists';
+    $scope.test = $scope.results
+    $scope.navItems = [
+      {value: "page1", label: "Artists"},
+      {value: $scope.test, label: "Events"},
+      {value: "page3", label: "Organizations"},
+    ];
+
+      /* PLAYING THE SOUND*/
     $scope.myDate = new Date();
+
+    $scope.mySound = soundManager.createSound({
+      url: 'http://www.stephaniequinn.com/Music/Jazz%20Rag%20Ensemble%20-%2010.mp3'
+    });
+
+
+    $scope.play = function(){
+      $scope.mySound.play();
+    }
 
 
     // $scope.getArtists = function() {
-    // 	console.log($scope.selectedMedium);
+    //  console.log($scope.selectedMedium);
     //   $http.get('/api/users/discovery/' + $scope.selectedMedium + '/' + $scope.selectedSubmedium).then(function(response) {
     //     $scope.artists = response.data;
     //     console.log(response.data);
     //   })
     // }
 
-  	$scope.mediums = [
-			{'name': 'Music', 'submedia': ['Brass', 'Classical', 'Country', 'Experimental', 'Folk', 'Hip-hop', 'Jazz', 'Rock']},
-      {'name': 'Writing', 'submedia': ['Fiction', 'Non-Fiction', 'Poetry']},
-      {'name': 'Film', 'submedia': ['Documentaries', 'Feature Films', 'Short Films']},
-      {'name': 'Visual', 'submedia': ['Acrylics', 'Pastels', 'Watercolor', 'Charcoal', 'Pencil']},
-      {'name': 'Photography', 'submedia': ['Digital', 'Film']},
-      {'name': 'Dance', 'submedia': ['Ballet', 'Ballroom', 'Hip-hop', 'Lyrical','Theater', 'Plays', 'Musicals']},
-      {'name': 'Bearers', 'submedia': ['Mardi Gras Indians']},
-      {'name': 'Comedy', 'submedia': ['Dark', 'Upbeat']},
-      {'name': 'Crafts', 'submedia': ['Crochet', 'Cross Stitch', 'Knitting', 'Lettering Arts']},
-      {'name': 'Design'},
-      {'name': 'Code', 'submedia': ['Front-end', 'Back-end', 'Full-stack']},
-      {'name': 'Sculpture', 'submedia': ['Clay', 'Metal', 'Wood']},
-  ];
-  	$scope.mediaList = [
-      {'name': 'Music', 'submedia': ['Brass', 'Classical', 'Country', 'Experimental', 'Folk', 'Hip-hop', 'Jazz', 'Rock']},
-      {'name': 'Writing', 'submedia': ['Fiction', 'Non-Fiction', 'Poetry']},
-      {'name': 'Film', 'submedia': ['Documentaries', 'Feature Films', 'Short Films']},
-      {'name': 'Visual', 'submedia': ['Acrylics', 'Pastels', 'Watercolor', 'Charcoal', 'Pencil']},
-      {'name': 'Photography', 'submedia': ['Digital', 'Film']},
-      {'name': 'Dance', 'submedia': ['Ballet', 'Ballroom', 'Hip-hop', 'Lyrical','Theater', 'Plays', 'Musicals']},
-      {'name': 'Bearers', 'submedia': ['Mardi Gras Indians']},
-      {'name': 'Comedy', 'submedia': ['Dark', 'Upbeat']},
-      {'name': 'Crafts', 'submedia': ['Crochet', 'Cross Stitch', 'Knitting', 'Lettering Arts']},
-      {'name': 'Design'},
-      {'name': 'Code', 'submedia': ['Front-end', 'Back-end', 'Full-stack']},
-      {'name': 'Sculpture', 'submedia': ['Clay', 'Metal', 'Wood']},
+    $scope.events = [ {'name': 'SHIT', 'submedia': ['Brass', 'Classical', 'Country', 'Experimental', 'Folk', 'Hip-hop', 'Jazz', 'Rock']},
+      {'name': 'fart', 'submedia': ['Fiction', 'Non-Fiction', 'Poetry']},
+      {'name': 'suck', 'submedia': ['Documentaries', 'Feature Films', 'Short Films']},
+      {'name': 'fart', 'submedia': ['Acrylics', 'Pastels', 'Watercolor', 'Charcoal', 'Pencil']}];
+
+    $scope.mediums = [
+      {'name': 'Music', 'submedia': ['Acoustic', 'Afro-caribbean', 'Americana', 'Bounce', 'Brass', 'Blues', 'Bluegrass', 'Brazilian','Burlesque','Cajun','Celtic','Classical','Country','EDM','Folk','Funk','Gospel','Hip-Hop/R&B','Indie','Jazz','Punk','Reggae','Roots','Soul','Zydeco']},
+      {'name': 'Visual', 'submedia': ['Photography', 'Painting', 'Sculpture','Graffiti', 'Film', 'Costumes', 'Graphic Design']},
+      {'name': 'Performing', 'submedia': ['Spoken Word', 'Comedy', 'Acting', 'Dance']},
+      {'name': 'Writing', 'submedia': ['Fiction', 'Non-fiction', 'Poetry', 'Journalism']},
+      {'name': 'Culture Bearers', 'submedia': ['Digital', 'Film']},
+      {'name': 'Culinary', 'submedia': []}
     ];
+
+    // $scope.mediaList = [
+    //   {'name': 'Music', 'submedia': ['Brass', 'Classical', 'Country', 'Experimental', 'Folk', 'Hip-hop', 'Jazz', 'Rock']},
+    //   {'name': 'Visual', 'submedia': ['Photography', 'Painting', 'Sculpture','Graffiti', 'Film', 'Costumes', 'Graphic Design']},
+    //   {'name': 'Performing', 'submedia': ['Spoken Word', 'Comedy', 'Acting', 'Dance']},
+    //   {'name': 'Writing', 'submedia': ['Fiction', 'Non-fiction', 'Poetry', 'Journalism']},
+    //   {'name': 'Culture Bearers', 'submedia': ['Digital', 'Film']},
+    //   {'name': 'Culinary', 'submedia': },
+    //   {'name': 'Dance', 'submedia': ['Ballet', 'Ballroom', 'Hip-hop', 'Lyrical','Theater', 'Plays', 'Musicals']},
+    //   {'name': 'Bearers', 'submedia': ['Mardi Gras Indians']},
+    //   {'name': 'Comedy', 'submedia': ['Dark', 'Upbeat']},
+    //   {'name': 'Crafts', 'submedia': ['Crochet', 'Cross Stitch', 'Knitting', 'Lettering Arts']},
+    //   {'name': 'Design'},
+    //   {'name': 'Code', 'submedia': ['Front-end', 'Back-end', 'Full-stack']},
+    //   {'name': 'Sculpture', 'submedia': ['Clay', 'Metal', 'Wood']},
+    // ];
 
     $scope.ageList = [
       {"age": "age-18"},
@@ -133,21 +182,5 @@ angular.module('culturalystApp')
 {"id":37,"first_name":"Dorothy","last_name":"Perry","medium":"Country","cover_photo":"https://unsplash.it/g/200/300"}
 ];
 
-$scope.mySound = soundManager.createSound({
-  url: 'http://www.stephaniequinn.com/Music/Jazz%20Rag%20Ensemble%20-%2010.mp3'
-});
-
-
-$scope.play = function(){
-	$scope.mySound.play();
-}
-
-$scope.selectionMade = function(){
-	if ($scope.selectedMedium != undefined){
-		return true
-	} else{
-		return false
-	}
-}
 
   }]);

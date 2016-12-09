@@ -1,27 +1,27 @@
 <div class="page_container_discover_B">
 	<div class="medium_container">
 	    <div class="button_container">
-		    <md-button class="md-fab medium-fab" id="music" ng-click="loadMusicSubMediums()" aria-label="Big FAB">
+		    <md-button class="md-fab medium-fab" id="music" ng-click="loadMusicSubMediums()" ng-model="selectedMedium" aria-label="Big FAB">
 		    </md-button>
 	    	<label>Music</label>
 	    </div>
 	    <div class="button_container">
-		    <md-button class="md-fab medium-fab" id="visualArt"aria-label="Big FAB">
+		    <md-button class="md-fab medium-fab" id="visualArt"aria-label="Big FAB" ng-model="selectedMedium">
 		    </md-button>
 	    	<label>Visual</label>
 	    </div>
 	    <div class="button_container">
-		    <md-button class="md-fab medium-fab" id="performingArt" aria-label="Big FAB"> 
+		    <md-button class="md-fab medium-fab" id="performingArt" aria-label="Big FAB" ng-model="selectedMedium"> 
 		    </md-button>
 	    	<label>Performing</label>
 	    </div>
 	    <div class="button_container">
-		    <md-button class="md-fab medium-fab" id="writing"aria-label="Big FAB">
+		    <md-button class="md-fab medium-fab" id="writing"aria-label="Big FAB" ng-model="selectedMedium">
 		    </md-button>
 	    	<label>Writing</label>
 			</div>
 			<div class="button_container">
-		    <md-button class="md-fab medium-fab" id="cultureBearers"aria-label="Big FAB">
+		    <md-button class="md-fab medium-fab" id="cultureBearers"aria-label="Big FAB" ng-model="selectedMedium">
 		    </md-button>
 	    	<label>Culture</label>
 			</div>
@@ -34,4 +34,18 @@
 	    	<label>{{submedium}}</label>
 	    </div>
 	</div>
+<!-- 		       <div class="query_results" ng-show='ifMusic()' layout-padding>
+						<div  ng-repeat="artist in results">
+							 <md-card class="query_card" md-whiteframe="3">
+					        <img ng-src="../../assets/images/cover_4.14.1622.png" class="md-card-image">
+				
+					        <md-card-actions layout="row" layout-align="end center">
+					          <md-button class="md-fab" ng-click="play()" aria-label="Show Menu" style="background-color: #ffdad5">
+			          			<md-icon md-svg-icon="playArrow_black"></md-icon>
+			        			</md-button>
+					        	{{artist.first_name}} {{artist.last_name}}
+					        </md-card-actions>
+					      </md-card>
+						</div>
+					</div> -->
 </div>

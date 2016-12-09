@@ -24,7 +24,7 @@
 	</div>
 </div> -->
 
-<div class="page_container_discovery">
+<div class="page_container_discover">
 
 <div id="basics" class="maxFormWidth" ng-cloak>
 	<md-toolbar class="toolbar_basics">
@@ -102,21 +102,15 @@
   	</div>
 	<md-content layout-padding>
 		<div layout-gt-sm="row">
-	    <md-input-container class="md-block" flex-gt-sm>
-	      <label>Medium of Art</label>
-	        <md-select ng-model="medium" ng-change="vm.loadGenres(medium)" ng-selected="medium">
-	          <md-option ng-repeat="medium in mediaList">{{medium.name}}
-	          </md-option>
-	        </md-select>
-	    </md-input-container>
+	    <md-select class="media_submedia" ng-model="selectedMedium" placeholder="Medium" md-on-close="loadSubMediums(selectedMedium); ifMusic(selectedMedium); getArtists(selectedMedium)" ng-selected="selectedMedium">
+	     <md-optgroup label="Mediums">
+	    <md-option ng-value="medium" ng-repeat="medium in mediums">{{ medium.name }}</md-option>
+	  </md-select>
 
-		  <md-input-container class="md-block" flex-gt-sm>
-		    <label>Genre of Art</label>
-		    <md-select ng-model="genre">
-	          <md-option ng-repeat="genre in genreList">{{genre}}
-	          </md-option>
-	        </md-select>
-		  </md-input-container>
+        <md-select class="media_submedia" ng-model="selectedSubmedium" placeholder="Genre" md-on-close="test(); getArtists()" ng-selected="selectedSubmedium" multiple>
+          <md-optgroup label="Genres">
+						<md-option ng-value="submedium" ng-repeat="submedium in submedia">{{submedium}}</md-option>
+        </md-select>
 	  </div>
 	  <md-input-container class="md-block">
 	    <label>Years of Experience</label>

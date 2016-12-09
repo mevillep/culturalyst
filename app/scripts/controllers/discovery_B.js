@@ -17,10 +17,18 @@ angular.module('culturalystApp')
       $scope.submedia = medium.submedia;
     };
 
+  // $scope.getArtists = function(){
+  //   firebase.database().ref('/Artists/Music').once('value').then(function(snapshot){
+  //     console.log(snapshot.val());
+  //     $scope.results = snapshot.val();
+  //   })
+  // }
+
     $scope.ifMusic = function(medium){
     console.log('if music is firing'); 	
 	    if (medium.name === 'Music'){
-	    	$scope.results = $scope.music_results;
+        $scope.getArtists();
+	    	// $scope.results = $scope.music_results;
 	    }else{
 	    	$scope.results = [];
 	    };
@@ -56,7 +64,7 @@ angular.module('culturalystApp')
   ];
   	$scope.mediaList = [
       {'name': 'Music', 'submedia': ['Brass', 'Classical', 'Country', 'Experimental', 'Folk', 'Hip-hop', 'Jazz', 'Rock']},
-      {'name': 'Writing', 'submedia': ['Fiction', 'Non-Fiction', 'Poetry']},
+      {'name': 'Visual', 'submedia': ['Photography', 'Painting', 'Sculpture','Graffiti','']},
       {'name': 'Film', 'submedia': ['Documentaries', 'Feature Films', 'Short Films']},
       {'name': 'Visual', 'submedia': ['Acrylics', 'Pastels', 'Watercolor', 'Charcoal', 'Pencil']},
       {'name': 'Photography', 'submedia': ['Digital', 'Film']},
