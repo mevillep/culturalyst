@@ -4,7 +4,7 @@ angular.module('culturalystApp')
 // console.log(auth);
 	  //ng-models
   $scope.selectedMedium;
-  $scope.selectedSubmedium;
+  $scope.selectedSubmedium = {};
   $scope.results;
   $scope.musicResultsFB = [];
 
@@ -14,7 +14,6 @@ angular.module('culturalystApp')
     };
 
     $scope.selectionMade = function(){
-      console.log('in this bish')
     	if ($scope.results != undefined){
     		return true
     	} else{
@@ -23,26 +22,34 @@ angular.module('culturalystApp')
     };
 
   $scope.getArtists = function(medium){
+    //resetting results array
+    $scope.results = [];
     var Medium = medium.name;
+    console.log(Medium);
     firebase.database().ref('/Artists/' + Medium).once('value').then(function(snapshot){
-      console.log(fbMedium);
       console.log(snapshot.val());
-      var obj = snapshot.val().Jazz;
+      var obj = snapshot.val();
       for (var key in obj) {
         var innerObj = obj[key]
         console.log(innerObj);
-        $scope.musicResultsFB.push(innerObj);
+        $scope.results.push(innerObj);
       }
-      console.log($scope.musicResultsFB);
+      console.log($scope.results);
     })
   }
+
+  $scope.test = function(){
+    console.log($scope.selectedSubmedium);
+    $scope.filter = $scope.selectedSubmedium;
+  }
+
 
     // $scope.ifMusic = function(medium){
     // console.log('if music is firing');  
     //   if (medium.name === 'Music'){
-    //     // $scope.results = $scope.music_results;
-    //     $scope.getArtists();
-    //     $scope.results = $scope.musicResultsFB;
+    //     $scope.results = $scope.music_results;
+    //     // $scope.getArtists();
+    //     // $scope.results = $scope.musicResultsFB;
     //     return true;
     //   }else{
     //     $scope.results = undefined;
@@ -53,7 +60,6 @@ angular.module('culturalystApp')
 
     /* NAVIGATION */
     $scope.currentNavItem = 'Artists';
-    $scope.test = $scope.results
     $scope.navItems = [
       {value: "page1", label: "Artists"},
       {value: $scope.test, label: "Events"},
@@ -88,11 +94,13 @@ angular.module('culturalystApp')
 
     $scope.mediums = [
       {'name': 'Music', 'submedia': ['Acoustic', 'Afro-caribbean', 'Americana', 'Bounce', 'Brass', 'Blues', 'Bluegrass', 'Brazilian','Burlesque','Cajun','Celtic','Classical','Country','EDM','Folk','Funk','Gospel','Hip-Hop/R&B','Indie','Jazz','Punk','Reggae','Roots','Soul','Zydeco']},
-      {'name': 'Visual', 'submedia': ['Photography', 'Painting', 'Sculpture','Graffiti', 'Film', 'Costumes', 'Graphic Design']},
-      {'name': 'Performing', 'submedia': ['Spoken Word', 'Comedy', 'Acting', 'Dance']},
-      {'name': 'Writing', 'submedia': ['Fiction', 'Non-fiction', 'Poetry', 'Journalism']},
+      {'name': 'Visual', 'submedia': ['Photography', 'Painting', 'Sculpture','Graffiti', 'Film', 'Costumes', 'Graphic Design', 'Crafts']},
+      {'name': 'Fashion', 'submedia': ['Clothing', 'Accessories', 'Eyewear','Jewelry']},
+      {'name': 'Performing', 'submedia': ['Spoken Word', 'Comedy', 'Theater', 'Dance']},
+      {'name': 'Written', 'submedia': ['Fiction', 'Non-fiction', 'Poetry', 'Journalism','Dallas']},
       {'name': 'Culture Bearers', 'submedia': ['Digital', 'Film']},
-      {'name': 'Culinary', 'submedia': []}
+      {'name': 'Culinary', 'submedia': []},
+      {'name': 'Other', 'submedia': []}
     ];
 
     // $scope.mediaList = [

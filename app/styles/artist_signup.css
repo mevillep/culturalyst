@@ -96,6 +96,7 @@ md-toolbar.toolbar_basics {
   margin: auto;
   margin-bottom: 40px;
   margin-top: 40px;
+  min-width: 320px;
 }
 
 #basics md-content{
@@ -120,6 +121,7 @@ The Art*/
 #theArt{
 	padding: 20px;
 	margin-bottom: 40px;
+	min-width: 320px;
 }
 
 #theArt md-content{
@@ -148,6 +150,7 @@ button#saveArtButton {
 #properties {
 	padding: 20px;
 	margin-bottom: 40px;
+	min-width: 320px;
 }
 
 #properties md-content{

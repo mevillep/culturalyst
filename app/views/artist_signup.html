@@ -54,26 +54,26 @@
 	  </md-input-container>
 	</div>
 
-	  <md-input-container class="md-block" flex-gt-sm="">
-	    <label>Birthday (MM/DD/YYYY)</label>
-	    <input ng-model="dob" type="text">
-	  </md-input-container><br>
 
 	  <div layout-gt-sm="row">
+	  <md-input-container class="md-block" flex-gt-sm="">
+	    <label>Birthday (MM/DD/YYYY)</label>
+	    <input ng-model="currentUser.dob" type="text">
+	  </md-input-container><br>
 		  <md-input-container class="md-block" flex-gt-sm="">
 		    <label>Hometown City</label>
-		    <input ng-model="hometown" type="text">
+		    <input ng-model="currentUser.hometown" type="text">
 		  </md-input-container><br>
 
 		  <md-input-container class="md-block" flex-gt-sm="">
 		    <label>Hometown State</label>
-		    <input ng-model="hometown_state" type="text">
+		    <input ng-model="currentUser.hometown_state" type="text">
 		  </md-input-container><br>
  		</div>
 
     <md-input-container class="md-block" flex-gt-sm style="padding-bottom: 10px">
       <label>Neighborhood</label>
-        <md-select ng-model="neighborhood">
+        <md-select ng-model="currentUser.neighborhood">
           <md-option ng-repeat="neighborhood in neighborhoods" value="{{neighborhood.abbrev}}">{{neighborhood.abbrev}}
           </md-option>
         </md-select>
@@ -81,13 +81,12 @@
   <!--   TODO: Green circle around button after it is pressed + $mdToast (likely using ngAnimate)-->
 	 </md-content>
 
-	 <div id="saveBasics">
+<!-- 	 <div id="saveBasics">
 		 <md-button class="md-fab md-raised" id="saveBasicsButton" aria-label="FAB" ng-click="saveBasics()">
-<!-- 		 Check Icon -->
-<!-- 	      <md-icon md-svg-icon="enter_black"></md-icon> -->
+
 	      Save
 	   </md-button>
-	 </div>
+	 </div> -->
 
 </div>
 
@@ -112,16 +111,15 @@
 						<md-option ng-value="submedium" ng-repeat="submedium in submedia">{{submedium}}</md-option>
         </md-select>
 	  </div>
-	  <md-input-container class="md-block">
-	    <label>Years of Experience</label>
-	    <input ng-model="experience" type="dob">
-	  </md-input-container><br>
+
+<!-- 	   <md-select ng-model="artistType" placeholder="How would you categorize yourself?" md-on-close="" ng-selected="artistType">
+          <md-optgroup label="Category of Artist">
+						<md-option ng-value="years" placeholder="How would you categorize yourself?" ng-repeat="selection in types">{{selection.name}}</md-option>
+     </md-select> -->
 	 </md-content>
 
 	  <div id="saveArt">
-		 <md-button class="md-fab md-raised" id="saveArtButton" aria-label="FAB" ng-click="vm.registerArt()">
-		 <!-- 		 Check Icon -->
-<!-- 	      <md-icon md-svg-icon="enter_black"></md-icon> -->
+		 <md-button class="md-fab md-raised" id="saveArtButton" aria-label="FAB" ng-click="saveArtist()">
 			Save
 	   </md-button>	
 	  </div>
@@ -163,10 +161,6 @@
 	    <input ng-model="soundcloud" type="text">
 	  </md-input-container><br>
 
-	  <md-input-container class="md-block">
-	    <label>Behance</label>
-	    <input ng-model="behance" type="text">
-	  </md-input-container><br>
 
 	  <md-input-container class="md-block">
 	    <label>Bandcamp</label>
