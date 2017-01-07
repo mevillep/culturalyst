@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('culturalystApp')
   .controller('DiscoveryCtrl',['$scope','auth1',function ($scope, auth1) {
 
@@ -10,15 +12,16 @@ angular.module('culturalystApp')
 
   	$scope.loadSubMediums = function(medium){
       console.log(medium);
+      $scope.selectedSubmedium = [];
       $scope.submedia = medium.submedia;
     };
 
     $scope.selectionMade = function(){
-    	if ($scope.results != undefined){
-    		return true
-    	} else{
-    		return false
-    	}
+      if ($scope.results != undefined){
+        return true
+      } else{
+        return false
+      }
     };
 
   $scope.getArtists = function(medium){
@@ -31,6 +34,7 @@ angular.module('culturalystApp')
       var obj = snapshot.val();
       for (var key in obj) {
         var innerObj = obj[key]
+        innerObj.uid = key;
         console.log(innerObj);
         $scope.results.push(innerObj);
       }

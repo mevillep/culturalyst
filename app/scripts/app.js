@@ -30,11 +30,11 @@
         controller: 'AboutCtrl',
         controllerAs: 'about'
       })
-      .when('/artist', {
-        templateUrl: 'views/artist.html',
-        controller: 'ArtistCtrl',
-        controllerAs: 'artist'
-      })
+      // .when('/artist', {
+      //   templateUrl: 'views/artist.html',
+      //   controller: 'ArtistCtrl',
+      //   controllerAs: 'artist'
+      // })
       .when('/artist_signup', {
         templateUrl: 'views/artist_signup.html',
         controller: 'ArtistSignupCtrl',
@@ -59,6 +59,11 @@
         templateUrl: 'views/artist_bio.html',
         controller: 'DiscoveryCtrl_B',
         controllerAs: 'discovery_B'
+      })
+      .when('/artist/:medium/:id', {
+        templateUrl: 'views/artist.html',
+        controller: 'ArtistCtrl',
+        controllerAs: 'artist'
       })
       .otherwise({
         redirectTo: '/'

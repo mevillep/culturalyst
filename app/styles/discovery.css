@@ -2,8 +2,8 @@
 	padding-top: 275px;
   display: flex;
   flex-direction: column;
-  padding-right: 10px;
-  padding-left: 10px;
+/*  padding-right: 10px;
+  padding-left: 10px;*/
 }
 
 .discovery_hero {
@@ -41,10 +41,9 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height:400px;
+/*  height:400px;*/
   background-color: white;
   align-items: center;
-  padding: 10px;
 }
 
 .query_card{
@@ -53,10 +52,17 @@
   margin:10px;
 }
 
+.sm2-360ui{
+  /* size of the container for the circle, etc. */
+  width:50px;
+  height:50px;
+}
 md-card .md-actions:not(.layout-column) .md-button:not(.md-icon-button):last-of-type, md-card md-card-actions:not(.layout-column) .md-button:not(.md-icon-button):last-of-type {
     margin-right: 0;
     margin-right: 168px;
     margin-bottom: 40px;
+
+}
 
 
 

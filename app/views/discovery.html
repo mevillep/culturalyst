@@ -11,6 +11,7 @@
 <div class="page_container_discover">
 <!-- 	<div class="discovery_hero"></div>
   <div class="picture-overlay"></div> -->
+  <h1>{{selectedMedium.name}}</h1>
   <md-select class="media_submedia" ng-model="selectedMedium" placeholder="Medium" md-on-close="loadSubMediums(selectedMedium); ifMusic(selectedMedium); getArtists(selectedMedium)" ng-selected="selectedMedium">
 	    <md-option ng-value="medium" ng-repeat="medium in mediums">{{ medium.name }}</md-option>
 	  </md-select>
@@ -81,7 +82,7 @@
 
 		  </div>
           <div class="query_results" layout-padding>
-						<div  ng-repeat="artist in results  | filter: searchText">
+						<a  ng-repeat="artist in results  | filter: searchText" href="/#/artist/{{artist.selectedMedium}}/{{artist.uid}}">
 							 <md-card class="query_card" md-whiteframe="3">
 					        <img ng-src="../../assets/images/cover_4.14.1622.png" class="md-card-image">
 				
@@ -89,10 +90,13 @@
 <!-- 					          <md-button class="md-fab" ng-click="play()" aria-label="Show Menu" style="background-color: #ffdad5">
 			          			<md-icon md-svg-icon="playArrow_black"></md-icon>
 			        			</md-button> -->
-					        	{{artist.name}}{{artist.name_last}}
+<!-- 			        			<div class="ui360">
+										 <a href="/path/to/an.mp3">play "an.mp3"</a>
+										</div> -->
+					        	{{artist.name}} {{artist.name_last}}
 					        </md-card-actions>
 					      </md-card>
-						</div>
+					   </a>
 					</div>
         </md-content>
       </md-tab>

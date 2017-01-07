@@ -11,7 +11,12 @@ angular.module('culturalystApp')
     $scope.selectedSubmedium = [];
     $scope.artistType;
 
+  $scope.getCurrentUser = function(){
+    auth1.getCurrentUser();
+    console.log('current user', auth1.getCurrentUser());
+  };
 
+  $scope.getCurrentUser();
 
     $scope.saveArtist = function(){
       var medium = $scope.selectedMedium.name
@@ -26,6 +31,7 @@ angular.module('culturalystApp')
         selectedSubmedium:subMedium,
         hometown: user.hometown,
         hometownState: user.hometown_state,
+        sampleWork: user.sampleWork
       });
     };
 
@@ -43,6 +49,47 @@ angular.module('culturalystApp')
         return false
       }
     };
+
+    $scope.storage = firebase.storage();
+
+    $scope.storageRef = $scope.storage.ref();
+
+    $scope.setMusicRef = function(sampleWork){
+      $scope.musicRef = $scope.storageRef.child('music' + '-' + $scope.currentUser.uid + '-' + sampleWork);
+      console.log(sampleWork);
+    }
+
+
+// upload song
+    var fileInput = document.getElementById('fileInput');
+      fileInput.addEventListener('change', function(e) {
+          $scope.musicRef.put(fileInput.files[0]).then(function(snapshot) {
+          console.log('Uploaded a blob or file!');
+      });
+    });
+
+
+    $scope.saveSampleWork = function(){
+        $scope.musicRef.getDownloadURL().then(function(url) {
+        console.log(url);
+        $scope.currentUser.sampleWork = url;
+      }).catch(function(error) {
+        // Handle any errors
+        });
+    };
+
+    $scope.play = function(){
+      $scope.mySound.play();
+    }
+
+    $scope.pressPlay = function(){
+      $scope.musicRef.getDownloadURL().then(function(url) {
+        $scope.mySound = soundManager.createSound({
+          url: url
+        })
+        $scope.mySound.play();
+      });
+    }
 
 
     $scope.mediums = [
