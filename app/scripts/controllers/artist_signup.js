@@ -31,7 +31,8 @@ angular.module('culturalystApp')
         selectedSubmedium:subMedium,
         hometown: user.hometown,
         hometownState: user.hometown_state,
-        sampleWork: user.sampleWork
+        sampleWork: user.sampleWork,
+        story: user.biography
       });
     };
 

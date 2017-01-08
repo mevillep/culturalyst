@@ -1,29 +1,36 @@
 'use strict';
 
 /**
- * @ngdoc function
- * @name culturalystApp.controller:MainCtrl
- * @description
- * # MainCtrl
- * Controller of the culturalystApp
- */
+* @ngdoc function
+* @name culturalystApp.controller:MainCtrl
+* @description
+* # MainCtrl
+* Controller of the culturalystApp
+*/
 angular.module('culturalystApp')
-  .controller('LoginCtrl',["$scope", "auth1", function ($scope, auth1) {
+ .controller('LoginCtrl',["$scope", "auth1", function ($scope, auth1) {
 
-  $scope.login = function(){
-    auth1.login();
-  };
+ $scope.login = function(){
+   console.log('login ctrl');
+   auth1.login();
+ };
 
-  $scope.email = function(user){
-    console.log(user);
-    console.log('new');
-    auth1.email(user.email,user.password);
-  };
+ $scope.fbLogin = function(){
+   console.log('YES');
+   auth1.login();
+ }
 
-  $scope.emailSignin =  function(existingUser){
-    console.log('existing');
-    auth1.emailSignin(existingUser.email,existingUser.password);
-  };
+ $scope.email = function(user){
+   console.log(user);
+   console.log('new');
+   auth1.email(user.email,user.password);
+ };
 
-    $scope.some = 'Login Controller';
-  }]);
+ $scope.emailSignin =  function(existingUser){
+   console.log('existing');
+   console.log(existingUser);
+   auth1.emailSignin(existingUser.email,existingUser.password);
+ };
+
+
+ }]);

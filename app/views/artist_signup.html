@@ -78,7 +78,6 @@
           </md-option>
         </md-select>
     </md-input-container>
-  <!--   TODO: Green circle around button after it is pressed + $mdToast (likely using ngAnimate)-->
 	 </md-content>
 
 <!-- 	 <div id="saveBasics">
@@ -119,32 +118,48 @@
 	 </md-content>
 </div>
 
-<div id="properties" class="maxFormWidth" ng-cloak>
-<!-- 
-TODO: Add a title to the song as an input that (along with User Id) becomes Firebase Storage Ref -->
-<md-toolbar class="toolbar_properties">
+<div id="story" class="maxFormWidth" ng-cloak>
+	<md-toolbar class="toolbar_theArt">
 	  <div class="md-toolbar-tools">
-	   	<h2 class="md-flex">Sample of Your Work</h2>
+	   	<h2 class="md-flex">Your Story</h2>
 	  </div>
-	  <md-button ng-click="openProperties = !openProperties">Instructions</md-button>
+	  <md-button ng-click="openArt = !openArt">Instructions</md-button>
 	</md-toolbar>
 	<md-content layout-padding>
-	  <label>Step 1: Name your Work</label>
-	  <md-input-container class="md-block flex" flex-gt-sm="">
-		    <label>Name of Work</label>
-		    <input ng-model="currentUser.sampleWork" type="text"> <md-button ng-click="setMusicRef(currentUser.sampleWork)">Set Name</md-button>
-		  </md-input-container><br>
-		   <label>Step 2: Select mp3 file</label>
-			<input type="file" id="fileInput"><br>
-			<label>Step 3: Upload Song</label>
-		 <md-button  id="saveSampleButton" aria-label="FAB" ng-click="saveSampleWork()">
-			Upload Work
+		 <md-input-container class="md-block">
+		          <label>Biography</label>
+		          <textarea ng-model="currentUser.biography" md-maxlength="450" rows="5" md-select-on-focus></textarea>
+		        </md-input-container>
 	</md-content>
-		  <div id="saveSample">
-	   </md-button>	
-	  </div>
 </div>
 
+<div id="sample" class="maxFormWidth" ng-cloak>
+
+	<!-- 
+	TODO: Add a title to the song as an input that (along with User Id) becomes Firebase Storage Ref -->
+	<md-toolbar class="toolbar_properties">
+		  <div class="md-toolbar-tools">
+		   	<h2 class="md-flex">Sample of Your Work</h2>
+		  </div>
+		  <md-button ng-click="openProperties = !openProperties">Instructions</md-button>
+		</md-toolbar>
+		<md-content layout-padding>
+		  <md-input-container class="md-block flex" flex-gt-sm="">
+			    <label>Name of Work</label>
+			    <input ng-model="currentUser.sampleWork" type="text"> <md-button ng-click="setMusicRef(currentUser.sampleWork)">Set Name</md-button>
+			</md-input-container><br>
+			<label>Step 2: Select mp3 file</label>
+			<input type="file" id="fileInput"><br>
+			<label>Step 3: Upload Song</label>
+			<md-button  id="saveSampleButton" aria-label="FAB" ng-click="saveSampleWork()">
+				Upload Work
+			</md-button>
+		</md-content>
+<!-- 			 <div id="saveSample">
+		   	</md-button>	
+		  </div>
+			</div> -->
+</div>
 	  <div id="saveArt">
 		 <md-button class="md-fab md-raised" id="saveArtButton" aria-label="FAB" ng-click="saveArtist()">
 			Save

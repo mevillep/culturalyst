@@ -65,6 +65,11 @@
         controller: 'ArtistCtrl',
         controllerAs: 'artist'
       })
+      .when('/login', {
+       templateUrl: 'views/login.html',
+       controller: 'LoginCtrl',
+       controllerAs: 'login'
+     })
       .otherwise({
         redirectTo: '/'
       })

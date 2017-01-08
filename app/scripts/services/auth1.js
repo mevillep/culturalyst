@@ -1,6 +1,4 @@
-
   'use strict';
-
 /**
  * @ngdoc service
  * @name culturalystApp.auth1
@@ -9,9 +7,7 @@
  * Factory in the culturalystApp.
  */
 angular.module('culturalystApp')
-  .factory('auth1', function ($rootScope, $mdDialog) {
-
-
+  .factory('auth1', function ($rootScope, $mdDialog, $window) {
     //
     // function AuthService($location, $http, $cookies, $q, appConfig, Util, User) {
     //   var safeCb = Util.safeCb;
@@ -22,14 +18,12 @@ angular.module('culturalystApp')
     //     currentUser = User.get();
     //   }
     var Auth = {
-
       test(){
         console.log('in test');
       },
   /**
    * Save user to database.
    */
-
   saveUser(userId, name, email, imageUrl){
     firebase.database().ref('Users/' + userId).set({
       username: name,
@@ -38,23 +32,23 @@ angular.module('culturalystApp')
     });
     $mdDialog.cancel();
   },
-
   fbLogin(){
+      console.log('facebook auth');
       var provider = new firebase.auth.FacebookAuthProvider();
       // provider.addScope('user_birthday');
       // provider.addScope('user_events');
       // provider.addScope('user_friends');
       console.log(provider);
-
       firebase.auth().signInWithPopup(provider).then(function(result) {
       // This gives you a Facebook Access Token. You can use it to access the Facebook API.
       var token = result.credential.accessToken;
       // The signed-in user info.
       var user = result.user;
-      console.log(user);
+      $rootScope.signedUser = result.user;
+      $window.location.href = '/#/';
+      console.log($rootScope.signedUser);
       // Save the users basic information to the database
       Auth.saveUser(user.uid, user.displayName, user.email,user.photoURL);
-
     }).catch(function(error) {
       // Handle Errors here.
       console.log(error);
@@ -68,10 +62,11 @@ angular.module('culturalystApp')
     });
   },
 emailSignup(email,password){
-
   console.log('in sign up');
-console.log(email);
-  firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+    console.log(email);
+  firebase.auth().createUserWithEmailAndPassword(email, password).then(function(result){
+    console.log(result);
+  }).catch(function(error) {
   // Handle Errors here.
   var errorCode = error.code;
   console.log(errorCode);
@@ -79,49 +74,43 @@ console.log(email);
     console.log(errorMessage);
   // ...
 });
-  $mdDialog.cancel();
+ 
 },
 emailSignin(email,password){
-
   console.log('existing user2');
   firebase.auth().signInWithEmailAndPassword(email, password).then(function(result) {
   console.log(result);
+  $rootScope.signedUser = result;
+  $window.location.href = '/#/';
+  console.log($rootScope.signedUser);
 
-    $rootScope.signed = result;
-
-  console.log($rootScope.signed);
-  $mdDialog.cancel();
 }).catch(function(error) {
     // Handle Errors here.
     var errorCode = error.code;
     console.log(errorCode);
     var errorMessage = error.message;
       console.log(errorMessage);
-
   });
   //get signed in user
-
       // var user = firebase.auth().currentUser;
       // if (user) {
       //   console.log(user);
       // } else {
       //   console.log('user not found');
       // }
-
 },
-
   /**
    * Delete access token and user info
    */
   logout() {
     firebase.auth().signOut().then(function() {
       console.log('logging out');
+      console.log($rootScope.signedUser);
+      // $rootScope.signedUser.photoURL = '';
     }, function(error) {
     // An error happened.
     });
   },
-
-
   /**
    * Change password
    *
@@ -140,7 +129,6 @@ emailSignin(email,password){
       return safeCb(callback)(err);
     }).$promise;
   },
-
   /**
    * Gets all available info on a user
    *   (synchronous|asynchronous)
@@ -152,12 +140,13 @@ emailSignin(email,password){
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
         console.log(user);
+        $rootScope.signedUser = user;
       } else {
         console.log('No User Signed in');
+        $rootScope.signedUser = false;
       }
     });
   },
-
   /**
    * Check if a user is logged in
    *   (synchronous|asynchronous)
@@ -166,10 +155,8 @@ emailSignin(email,password){
    * @return {Bool|Promise}urn
    */
   isLoggedIn() {
-
     firebase.auth().onAuthStateChanged(function(user){
      userObj = user;
-
     })
     return userObj;
   },
@@ -185,11 +172,9 @@ emailSignin(email,password){
     var hasRole = function(r, h) {
       return userRoles.indexOf(r) >= userRoles.indexOf(h);
     };
-
     if (arguments.length < 2) {
       return hasRole(currentUser.role, role);
     }
-
     return Auth.getCurrentUser(null)
       .then(user => {
         var has = (user.hasOwnProperty('role')) ?
@@ -198,7 +183,6 @@ emailSignin(email,password){
         return has;
       });
   },
-
    /**
     * Check if a user is an admin
     *   (synchronous|asynchronous)
@@ -210,12 +194,10 @@ emailSignin(email,password){
     return Auth.hasRole
       .apply(Auth, [].concat.apply(['admin'], arguments));
   },
-
   isArtist() {
     return Auth.hasRole
       .apply(Auth, [].concat.apply(['artist'], arguments));
   },
-
   /**
    * Get auth token
    *
@@ -228,18 +210,15 @@ emailSignin(email,password){
 // return auth1;
 // }
 //
-
     // Public API here
     return {
        login : function(){
          Auth.fbLogin()
        },
        email : function(email,password){
-
          Auth.emailSignup(email,password)
        },
        emailSignin : function(email,password){
-
          Auth.emailSignin(email,password)
        },
        isLoggedIn : function(){
@@ -251,6 +230,5 @@ emailSignin(email,password){
        logout : function(){
         Auth.logout();
        }
-
     };
   });

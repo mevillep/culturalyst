@@ -1,6 +1,15 @@
 /* Navbar Styling
 */
+/*
+//profile picture*/
 
+.profile-image{
+  border-radius: 66px;
+  height:50px;
+  width:50px;
+  margin: 5px;
+
+}
 /*Makes buttons not black*/
 
 .hide_link a h3{

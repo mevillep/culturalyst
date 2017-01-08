@@ -182,9 +182,24 @@ button#savePropertiesButton {
   margin: auto;
   margin-bottom: 40px;
   margin-top: 40px;
+  min-width: 320px;
 }
 
 #story md-content{
+	border: 2px solid #ECEFF1;
+
+}
+
+#sample{
+	padding: 20px;
+	max-width: 896px;
+  margin: auto;
+  margin-bottom: 40px;
+  margin-top: 40px;
+  min-width: 320px;
+}
+
+#sample md-content{
 	border: 2px solid #ECEFF1;
 
 }
